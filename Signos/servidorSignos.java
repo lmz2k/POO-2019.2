@@ -3,22 +3,12 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class servidorSignos implements ObjetoRemotosignos_IF {
 
     private Map<String, List<String>> mapadeSignos = new HashMap<String, List<String>>();
     private List<String> signos = new ArrayList<>();
-
-
-    @Override
-    public String getMensagemSigno(String umSigno) throws RemoteException {
-        return umSigno;
-    }
-
 
 
 
@@ -44,6 +34,21 @@ public class servidorSignos implements ObjetoRemotosignos_IF {
     }
 
 
+    @Override
+    public String getMensagemSigno(String umSigno) throws RemoteException {
+
+
+        Random r = new Random();
+
+        return this.mapadeSignos.get(umSigno).get(r.nextInt(3));
+    }
+
+
+
+
+
+
+
 
 
 
@@ -53,7 +58,7 @@ public class servidorSignos implements ObjetoRemotosignos_IF {
 
             servidorSignos Server = new servidorSignos();
 
-            ObjetoRemotosignos_IF stub  = (servidorSignos) UnicastRemoteObject.exportObject(Server,0);
+            ObjetoRemotosignos_IF stub  = (ObjetoRemotosignos_IF) UnicastRemoteObject.exportObject(Server,0);
             Registry registry = LocateRegistry.createRegistry(1099); // default
             registry.bind("mensagem", stub);
 
