@@ -1,0 +1,17 @@
+primeiro, ir até a pasta onde esta os arquivos:
+
+exemplo:
+C:\Users\IFPB\my-app2\src\main\java\br\edu\ifpb> cd codigosFontes
+
+
+Compilar:
+C:\Users\IFPB\my-app2\src\main\java\br\edu\ifpb>\codigosFontes> javac Um.java (cria o .class)
+
+Empacotar: 
+crie um arquivo Manifesto.mf (pelo bloco de notas) e coloque (Main-Class: Um)
+C:\Users\IFPB\my-app2\src\main\java\br\edu\ifpb>\codigosFontes> jar cvmf manifesto.mf (NomeDoArquivoCompactado).jar Um.class
+
+EXECULTAR JAR:
+C:\Users\IFPB\my-app2\src\main\java\br\edu\ifpb>\codigosFontes>java -jar (NomeDoArquivoCompactado).jar
+
+
